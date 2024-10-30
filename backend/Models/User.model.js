@@ -22,7 +22,6 @@ const UserSchema = new Schema({
     required: true,
   },
   bio: { type: String, default: "" },
-  createdBattles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Battle" }], // Reference to battles
   profileImage: { type: String }, // URL to profile image
 });
 
