@@ -4,7 +4,7 @@ const createError = require("http-errors");
 require("dotenv").config();
 require("./helpers/init_mongodb");
 const cors = require("cors");
-
+const AuthRoute = require("./routes/auth.route");
 const app = express();
 app.use(
   cors({
@@ -17,6 +17,9 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json()); // for parse the req body
 app.use(express.urlencoded({ extended: true }));
+
+//To access all the auth route
+app.use("/auth", AuthRoute);
 
 //Error handling
 app.use(async (req, res, next) => {
