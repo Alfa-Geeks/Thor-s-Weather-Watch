@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import Login from './Component/Login/Login'
-import Signup from './Component/Signup/Signup'
-import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
-import Home from './Component/Home/Home';
+import { useEffect } from "react";
+import Login from "./Component/Login/Login";
+import Signup from "./Component/Signup/Signup";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Home from "./Component/Home/UserHome";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  useEffect(() => {
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.removeItem("accessToken"); // Clear token when the tab closes
+    });
+  });
   return (
     <>
       <Router>
         <Routes>
-        {/* <Route path="" element={<Home/>} /> */}
+          <Route path="/" element={<Navigate to = '/login'/>}></Route>
           <Route path="/signup" element={<Signup />} />
-          <Route path="" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
 
-          {/* Protect Home route: only accessible if logged in */}
-          <Route
-            path="/home"
-            element={isLoggedIn ? <Home /> : <Navigate to="/" />}
-          />
-          
-          {/* If the user is logged in and goes to login, redirect to home */}
-          <Route
-            path="/home"
-            element={isLoggedIn ? <Navigate to="/home" /> : <Login setIsLoggedIn={setIsLoggedIn} />}
-          />
+          <Route path="/user" element={<Home />} />
+
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

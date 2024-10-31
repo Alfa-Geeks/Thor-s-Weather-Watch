@@ -5,6 +5,7 @@ require("dotenv").config();
 require("./helpers/init_mongodb");
 const cors = require("cors");
 const AuthRoute = require("./routes/auth.route");
+const { verifyAccessToken } = require("./helpers/jwthelper");
 const app = express();
 app.use(
   cors({
@@ -17,6 +18,10 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json()); // for parse the req body
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/',verifyAccessToken,async (req ,res)=>{
+  res.send('verified')
+})
 
 //To access all the auth route
 app.use("/auth", AuthRoute);
