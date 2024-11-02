@@ -16,7 +16,13 @@ router.post("/send-location", (req, res) => {
     )
     .then(async (response) => {
       res.status(200).send(response.data);
-      send_Mail("pk.limited.7778.gmail.com");
+      const city = response.data.location.name;
+      const condition = response.data.current.condition.text;
+      const msg = `You are in ${city} and current weather condition is ${condition}`;
+
+      send_Mail("pk.limited.7778@gmail.com", msg)
+        .then((result) => console.log("Email sent successfully:", result))
+        .catch((error) => console.error("Error sending email:", error));
     })
     .catch((err) => console.log(err));
 });

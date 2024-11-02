@@ -8,6 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Home from "./Component/Home/UserHome";
+import Geolocation from "./Component/Home/Geolocation";
 
 function App() {
   useEffect(() => {
@@ -19,12 +20,13 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to = '/login'/>}></Route>
+          <Route path="/" element={<Navigate to="/login" />}></Route>
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/user" element={<Home />} />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/location" element={<Geolocation />} />
         </Routes>
       </Router>
     </>
