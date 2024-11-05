@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Header from "../Header/Header";
+import Weather from "../Weather/Weather";
 
 function UserHome() {
   const [Data, SetData] = useState({});
@@ -50,9 +52,14 @@ function UserHome() {
     }
   }, []);
 
+  
+
+
   return (
     <>
-      <p>Welcome : {Data.username}</p>
+      <Header userData = {Data}/>
+      <Weather/>
+      {/* <p>Welcome : {Data.username}</p>
       <p>Bio : {Data.bio}</p>
       <p>Email : {Data.email}</p>
       <button
@@ -60,7 +67,7 @@ function UserHome() {
         onClick={() => navigate("/login")}
       >
         Logout
-      </button>
+      </button> */}
     </>
   );
 }
