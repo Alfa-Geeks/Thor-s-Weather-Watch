@@ -26,9 +26,9 @@ function UserHome() {
   }, [navigate]);
 
   const logout = () => {
-    sessionStorage.removeItem('accessToken');
-    navigate('/login');
-  }
+    sessionStorage.removeItem("accessToken");
+    navigate("/login");
+  };
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -52,22 +52,10 @@ function UserHome() {
     }
   }, []);
 
-  
-
-
   return (
     <>
-      <Header userData = {Data}/>
-      <Weather/>
-      {/* <p>Welcome : {Data.username}</p>
-      <p>Bio : {Data.bio}</p>
-      <p>Email : {Data.email}</p>
-      <button
-        className="bg-cyan-300 text-cyan-800"
-        onClick={() => navigate("/login")}
-      >
-        Logout
-      </button> */}
+      <Header userData={Data} />
+      <Weather />
     </>
   );
 }

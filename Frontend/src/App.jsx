@@ -10,16 +10,16 @@ import {
 import Home from "./Component/Home/UserHome";
 
 function App() {
-  useEffect(() => {
-    window.addEventListener("beforeunload", () => {
-      sessionStorage.removeItem("accessToken"); // Clear token when the tab closes
-    });
-  });
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", () => {
+  //     sessionStorage.removeItem("accessToken"); // Clear token when the tab closes
+  //   });
+  // });
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to = '/login'/>}></Route>
+          <Route path="/" element={<Navigate to="/login" />}></Route>
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/user" element={<Home />} />
